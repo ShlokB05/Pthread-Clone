@@ -1,0 +1,24 @@
+Hello, this is a project that is meant to replicate a user level Pthread library with all the essential functionalities (threads, join, mutex) along with a scheduler that uses these scheduling policies: CFS, MFLQ, PSJF.
+
+How to run the benchmark?
+-------------------------
+1. First, pull this github repository 
+
+2. In the PthreadClone project root run:
+	$ make clean
+	$ make SCHED=PSJF or one of the other algorithms
+
+3. Then, CD into benchmarks, do a make clean and make
+	$ make clean
+	$ make
+
+4. Before running the benchmark, run 
+
+	$ ./genRecord.sh
+
+The genRecord generates data for external_cal.
+
+5. Running benchmarks:
+
+	$ ./external_cal 6 
+	To edit the number of threads, you may change the 6 to any value, though 4 is set to the default if not value is provided. 

@@ -1,4 +1,4 @@
-// File:    worker_t.h
+// File:	worker_t.h
 
 // List all group member's name:
 // username of iLab:
@@ -22,6 +22,7 @@
 #define QUANTUM 10
 
 
+
 /* include lib header files that you need here: */
 #include <unistd.h>
 #include <sys/syscall.h>
@@ -40,39 +41,39 @@ typedef uint worker_t;
 typedef enum { READY, RUNNING, BLOCKED, REMOVED, WAITING_FOR_MUTEX} status;
 typedef struct TCB {
 
-    void *(*MakeCtxRequiredSytnax)(void*);
-    void *arg;
+	void *(*MakeCtxRequiredSytnax)(void*);
+	void *arg;
 
-    worker_t ThreadID; // use 
-    void *stack;  //set it up later with malloc
-    status CurrThreadState;
-    ucontext_t threadCtx;
-    int priority;
-    struct TCB *next; 
-    void *ptrValue;
-    int quantumsRanFor;
-    bool elapsed;
-    double enqueuedTime; 
-    double enteredAt; 
-    double FirstRan; 
-    double FinishedAt;
-    double vruntime;
-    int lastMs;
+	worker_t ThreadID; // use 
+	void *stack;  //set it up later with malloc
+	status CurrThreadState;
+	ucontext_t threadCtx;
+	int priority;
+	struct TCB *next; 
+	void *ptrValue;
+	int quantumsRanFor;
+	bool elapsed;
+	double enqueuedTime; 
+	double enteredAt; 
+	double FirstRan; 
+	double FinishedAt;
+	double vruntime;
+	int lastMs;
 } tcb; 
 
 
 typedef struct Queue{
-    tcb *head;
-    tcb *tail;
+	tcb *head;
+	tcb *tail;
 } Queue;
 
 
 /* mutex struct definition */
 typedef struct worker_mutex_t {
-    int workerId; 
-    bool IsLocked;
-    tcb *user;
-    Queue *q; 
+	int workerId; 
+	bool IsLocked;
+	tcb *user;
+	Queue *q; 
 } worker_mutex_t;
 
 

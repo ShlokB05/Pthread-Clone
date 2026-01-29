@@ -18,8 +18,8 @@ int thread_num;
 int* counter;
 pthread_t *thread;
 int *mem = NULL;
-int sum = 0;
-int itr = RECORD_SIZE / 16;
+long long sum = 0;
+int itr = 4096 / 4;
 
 void external_calculate(void* arg) {
 	
@@ -151,7 +151,7 @@ int main(int argc, char **argv) {
 	free(counter);
 
 #ifdef USE_WORKERS
-	fprintf(stderr , "Total sum is: %d\n", sum);
+	fprintf(stderr , "Total sum is: %lld\n", sum);
         print_app_stats();
 	fprintf(stderr, "***************************\n");
 #endif
